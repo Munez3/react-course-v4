@@ -1,5 +1,3 @@
-import Button from "./Buttons";
-
 interface IProps {
   firstName: string;
   lastName: string;
@@ -15,7 +13,6 @@ export default function User({
     <>
       Użytkownik {firstName} {lastName}, wiek {age}
       <button onClick={() => alert(firstName)}>Kliknij mnie</button>
-      <Button />
     </>
   );
 }

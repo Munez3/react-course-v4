@@ -1,14 +1,10 @@
 interface IProps {
-  firstName: string | undefined;
-  lastName: string | undefined;
-  age: number | undefined;
+  user: IUser;
 }
 
-export default function User({
-  firstName,
-  lastName,
-  age,
-}: IProps): React.ReactElement {
+export default function User({ user }: IProps): React.ReactElement {
+  const { firstName, lastName, age } = user;
+
   if (!firstName && !lastName) {
     return <>Brak danych</>;
   }

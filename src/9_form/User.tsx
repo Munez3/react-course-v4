@@ -1,8 +1,4 @@
-interface IProps {
-  firstName: string | undefined;
-  lastName: string | undefined;
-  age: number | undefined;
-}
+interface IProps extends IUser {}
 
 export default function User({
   firstName,

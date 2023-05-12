@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.btn {
+  margin: 5px 0 5px auto;
+  background-color: green;
+  color: white;
+  display: block;
+  transition: 200ms;
+
+  &:hover {
+    background-color: darkgreen;
+  }
+
+  &:disabled {
+    background-color: gray;
+  }
+}

@@ -20,6 +20,7 @@ export default function AddUserForm({ addUser }: IProps): React.ReactElement {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addUser(user);
+    setUser({ firstName: "", lastName: "", age: undefined }); // clear state
     formRef.current?.reset(); // reset form
     formRef.current?.firstName.focus(); // focus on firstName input
   }
@@ -34,7 +35,12 @@ export default function AddUserForm({ addUser }: IProps): React.ReactElement {
         name="age"
         placeholder="Wiek"
       />
-      <button type="submit">Dodaj</button>
+      <button
+        type="submit"
+        disabled={!(user.firstName && user.lastName && user.age)}
+      >
+        Dodaj
+      </button>
     </form>
   );
 }

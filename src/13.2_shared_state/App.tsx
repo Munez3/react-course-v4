@@ -1,7 +1,7 @@
 import { useState } from "react";
-import User from "./User/User";
 import AddUserForm from "./AddUserForm/AddUserForm";
 import "./index.scss";
+import UserList from "./User/UserList";
 
 let id = 10;
 
@@ -20,16 +20,7 @@ export default function App() {
   return (
     <div className="grid grid-col-2">
       <AddUserForm addUser={addUser} />
-      <div>
-        <div className="grid grid-col-3 mb-1">
-          <span>Imię</span>
-          <span>Nazwisko</span>
-          <span>wiek</span>
-        </div>
-        {users.map((user) => (
-          <User key={user.id} user={user} />
-        ))}
-      </div>
+      <UserList users={users} />
     </div>
   );
 }

@@ -1,14 +1,19 @@
-import { useState } from "react";
-import "./user.scss";
 import UserDetails from "./UserDetails";
+import "./user.scss";
 interface IProps {
   user: IUser;
+  isActive: boolean;
+  onClick: () => void;
+  deleteUser: () => void;
 }
 
-export default function User({ user }: IProps): React.ReactElement {
+export default function User({
+  user,
+  isActive,
+  onClick,
+  deleteUser,
+}: IProps): React.ReactElement {
   const { firstName, lastName, age } = user;
-
-  const [isOpen, setIsOpen] = useState(false);
 
   if (!firstName && !lastName) {
     return <>Brak danych</>;
@@ -16,11 +21,11 @@ export default function User({ user }: IProps): React.ReactElement {
 
   return (
     <div className="user">
-      <div className="grid grid-col-2" onClick={() => setIsOpen(!isOpen)}>
+      <div className="grid grid-col-2" onClick={onClick}>
         <span>{firstName ? firstName : "- -"}</span>
         <span>{lastName && <strong>{lastName}</strong>}</span>
       </div>
-      {isOpen && <UserDetails age={age} />}
+      {isActive && <UserDetails age={age} deleteUser={deleteUser} />}
     </div>
   );
 }

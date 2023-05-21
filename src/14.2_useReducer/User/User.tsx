@@ -1,14 +1,17 @@
+import UserDetails from "./UserDetailts";
 import "./user.scss";
 interface IProps {
   user: IUser;
   isActive: boolean;
   onClick: () => void;
+  deleteUser: () => void;
 }
 
 export default function User({
   user,
   isActive,
   onClick,
+  deleteUser,
 }: IProps): React.ReactElement {
   const { firstName, lastName, age } = user;
 
@@ -22,13 +25,7 @@ export default function User({
         <span>{firstName ? firstName : "- -"}</span>
         <span>{lastName && <strong>{lastName}</strong>}</span>
       </div>
-      {isActive && (
-        <div>
-          <span>
-            Wiek: {age} {age && age > 18 && <i>pełnoletni</i>}
-          </span>
-        </div>
-      )}
+      {isActive && <UserDetails age={age} deleteUser={deleteUser} />}
     </div>
   );
 }

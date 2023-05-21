@@ -4,6 +4,15 @@
   padding: 2rem;
 }
 
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
 .grid {
   display: grid;
 
@@ -35,4 +44,11 @@
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.input {
+  margin: 5px 0;
+  padding: 5px 10px;
+  display: block;
+  box-sizing: border-box;
 }

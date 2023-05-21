@@ -17,10 +17,21 @@ export default function App() {
     setUsers([...users, userWithId]);
   }
 
+  function editUser(id: number, editedUser: IUser) {
+    const editedUsers = users.map((user) =>
+      user.id === id ? { ...user, ...editedUser } : user
+    );
+    setUsers(editedUsers);
+  }
+
+  function deleteUser(id: number) {
+    setUsers(users.filter((user) => user.id !== id));
+  }
+
   return (
     <div className="grid grid-col-2">
       <AddUserForm addUser={addUser} />
-      <UserList users={users} />
+      <UserList users={users} deleteUser={deleteUser} />
     </div>
   );
 }

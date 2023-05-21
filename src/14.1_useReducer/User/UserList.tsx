@@ -3,9 +3,13 @@ import User from "./User";
 
 interface IProps {
   users: IUserWithID[];
+  deleteUser: (id: number) => void;
 }
 
-export default function UserList({ users }: IProps): React.ReactElement {
+export default function UserList({
+  users,
+  deleteUser,
+}: IProps): React.ReactElement {
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
 
   function setActiveUser(index: number) {
@@ -27,6 +31,10 @@ export default function UserList({ users }: IProps): React.ReactElement {
           user={user}
           isActive={index === activeIndex}
           onClick={() => setActiveUser(index)}
+          deleteUser={() => {
+            deleteUser(user.id);
+            setActiveIndex(undefined);
+          }}
         />
       ))}
     </div>

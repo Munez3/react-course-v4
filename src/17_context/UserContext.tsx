@@ -1,6 +1,9 @@
-import { useReducer } from "react";
-import AddUserForm from "./AddUserForm/AddUserForm";
-import UserList from "./User/UserList";
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useReducer,
+} from "react";
 import userReducer from "./userReducer";
 
 const initialState = [
@@ -9,7 +12,15 @@ const initialState = [
   { firstName: "Piotr", lastName: "Kowalski", age: 43, id: 3 },
 ];
 
-export default function App() {
+const UserContext = createContext<{
+  users: IUserWithID[];
+  addUser: (newUser: IUser) => void;
+  deleteUser: (id: number) => void;
+}>({ users: [], addUser: () => {}, deleteUser: () => {} });
+
+export function UserContextProvider({
+  children,
+}: PropsWithChildren): React.ReactElement {
   const [state, dispatch] = useReducer(userReducer, initialState);
 
   function addUser(newUser: IUser) {
@@ -25,11 +36,12 @@ export default function App() {
   }
 
   return (
-    <>
-      <div className="grid grid-col-2">
-        <AddUserForm addUser={addUser} />
-        <UserList users={state} deleteUser={deleteUser} />
-      </div>
-    </>
+    <UserContext.Provider value={{ users: state, addUser, deleteUser }}>
+      {children}
+    </UserContext.Provider>
   );
+}
+
+export default function useUserContext() {
+  return useContext(UserContext);
 }

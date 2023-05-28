@@ -4,19 +4,35 @@
       "firstName": "Jan",
       "lastName": "Kowalski",
       "age": 16,
-      "id": 1
+      "id": 1,
+      "skills": [
+        "java",
+        "python",
+        "c++"
+      ]
     },
     {
       "firstName": "Anna",
       "lastName": "Nowak",
       "age": 33,
-      "id": 2
+      "id": 2,
+      "skills": [
+        "java",
+        "c#",
+        "HTML"
+      ]
     },
     {
       "firstName": "Piotr",
       "lastName": "Kowalski",
       "age": 43,
-      "id": 3
+      "id": 3,
+      "skills": [
+        "JavaScript",
+        "CSS",
+        "HTML",
+        "React"
+      ]
     }
   ]
 }

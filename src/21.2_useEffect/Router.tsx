@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.scss";
-import Home from "./Home";
+import Home from "./Home/Home";
 import { UserContextProvider } from "./UserContext";
 import AddUserForm from "./AddUserForm/AddUserForm";
 import UserList from "./User/UserList";
